@@ -1,0 +1,24 @@
+Wed Dec 27 17:14:39 2023
+WARNING: Nan, Inf or huge value in QVEL at DOF 4. The simulation is unstable. Time = 0.3580.
+
+Wed Dec 27 18:20:10 2023
+WARNING: Nan, Inf or huge value in QACC at DOF 0. The simulation is unstable. Time = 0.0120.
+
+Wed Dec 27 18:21:38 2023
+WARNING: Nan, Inf or huge value in QACC at DOF 2. The simulation is unstable. Time = 6.0640.
+
+Wed Dec 27 18:22:52 2023
+WARNING: Nan, Inf or huge value in QPOS at DOF 0. The simulation is unstable. Time = 6.6120.
+
+Wed Dec 27 18:51:58 2023
+WARNING: Nan, Inf or huge value in QPOS at DOF 0. The simulation is unstable. Time = 6.4680.
+
+Wed Dec 27 18:53:23 2023
+WARNING: Nan, Inf or huge value in QACC at DOF 0. The simulation is unstable. Time = 10.6640.
+
+Wed Dec 27 18:53:53 2023
+WARNING: Nan, Inf or huge value in QACC at DOF 3. The simulation is unstable. Time = 8.4360.
+
+Wed Dec 27 18:58:17 2023
+WARNING: mju_openResource: unknown file '/home/andrew/Documents/Projects/2023-Ideas/connieped/basic_connieped.xml'
+
