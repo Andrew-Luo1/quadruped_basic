@@ -1,7 +1,12 @@
+<!-- Compatible with both Mujoco and Mujoco MJX. Replaces all cylinder geoms with spheres.
+- Introduced mass on thigh, shank, wheel.
+- Contacts turned off except feet. 
+-->
+
 <mujoco model="anymal_c">
   <compiler angle="radian" autolimits="true"/>
-  <option timestep="0.002" iterations="10" ls_iterations="10" solver="Newton"/>
-  <!-- <option cone="pyramidal" impratio="100"/> -->
+  <option timestep="0.002" iterations="5" ls_iterations="6" solver="Newton"/>
+  <option cone="pyramidal"/>
 
   <visual>
     <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0 0 0"/>
@@ -12,20 +17,20 @@
   <default>
     <default class="general">
       <joint damping="0.1"/>
-      <geom priority="1" condim="3" friction="0.8 0.02 0.01" contype="1" conaffinity="0"/>
+      <geom priority="1" condim="3" friction="0.8 0.02 0.01" contype="8" conaffinity="4"/>
       <default class="collision">
         <geom/> 
       </default>
       <!-- main leg bodies  -->
       <!-- default pos and quats: no offset, no rotation. No self-collision. -->
       <default class="thigh">
-        <geom priority="1" condim="3" friction="0.8 0.02 0.01" type="capsule" size="0.005" fromto="0 0 0 0.06 0 0"/>
+        <geom priority="1" condim="3" friction="0.8 0.02 0.01" type="capsule" size="0.005" fromto="0 0 0 0.06 0 0" mass="0.03"/>
       </default>
       <default class="shank">
-        <geom priority="1" condim="3" friction="0.8 0.02 0.01" type="capsule" size="0.005" fromto="0 0 0 0.06 0 0"/>
+        <geom priority="1" condim="3" friction="0.8 0.02 0.01" type="capsule" size="0.005" fromto="0 0 0 0.06 0 0" mass="0.03"/>
       </default>
       <default class="wheel">
-        <geom priority="1" condim="3" friction="0.8 0.02 0.01" size="0.015" fromto="0 -0.0075 0 0 0.0075 0" type="cylinder" contype="1" conaffinity="0"/>
+        <geom priority="1" condim="3" friction="0.8 0.02 0.01" size="0.015" type="sphere" contype="1" conaffinity="0" mass="0.03"/>
       </default>
 
       <!-- main leg joints  -->
@@ -41,12 +46,12 @@
 
       <!-- motors -->
       <default class="servo_motor">
-        <geom mass="0.05" type="cylinder" size="0.015" fromto="0 -0.007 0 0 0.007 0"/>
+        <geom mass="0.05" type="sphere" size="0.015"/>
       </default>
 
       <!-- dc motor; assume point mass (to hide it) -->
       <default class="dc_motor">
-        <geom mass="0.05" type="cylinder" size="0.001" fromto="0 -0.001 0 0 0.001 0"/>
+        <geom mass="0.05" type="sphere" size="0.001"/>
       </default>
 
       <!-- motor actuation specs. -->
@@ -77,7 +82,7 @@
     <body name="base" pos="0 0 0.135" quat="1 0 0 0" childclass="general">
       <camera name="base" pos="0 -0.5 0.2" xyaxes="1 0 0 0 1 2" mode="targetbodycom"/>
       <freejoint/>
-      <geom class="collision" pos="0 0 0" quat="1 0 0 0" type="box" size="0.07 0.04 0.0075" mass="0.1"/>
+      <geom class="collision" pos="0 0 0" quat="1 0 0 0" type="box" size="0.07 0.04 0.0075" mass="0.2"/>
 
       <!-- Head; no inertial properties. No joint specified = fixed. -->
       <body name="head" pos="0.07 0 0">
